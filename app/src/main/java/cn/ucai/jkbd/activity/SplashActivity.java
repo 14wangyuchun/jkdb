@@ -1,4 +1,4 @@
-package cn.ucai.jkbd;
+package cn.ucai.jkbd.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
