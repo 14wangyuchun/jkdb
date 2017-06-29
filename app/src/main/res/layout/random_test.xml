@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@mipmap/main"
     android:orientation="vertical">
     <ImageView
@@ -13,7 +14,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/exam_title"
+        tools:text="@string/exam_title"
         android:textColor="#000"
         android:layout_marginLeft="10dp"
         />
@@ -38,12 +39,12 @@
             android:layout_height="wrap_content"
             android:textColor="#000"
             android:textSize="20sp"
-            android:text="这个标志有何含义?"/>
+            tools:text="这个标志有何含义?"/>
     </LinearLayout>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/myicon"
+        tools:src="@mipmap/myicon"
         android:layout_gravity="center_horizontal"/>
     <LinearLayout
         android:layout_width="match_parent"
@@ -61,7 +62,7 @@
             android:layout_height="wrap_content"
             android:textColor="#000"
             android:textSize="20sp"
-            android:text="车道数变少"/>
+            tools:text="车道数变少"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -79,7 +80,7 @@
             android:layout_height="wrap_content"
             android:textColor="#000"
             android:textSize="20sp"
-            android:text="合流处"/>
+            tools:text="合流处"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -97,7 +98,7 @@
             android:layout_height="wrap_content"
             android:textColor="#000"
             android:textSize="20sp"
-            android:text="应急变道"/>
+           tools:text="应急变道"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -115,7 +116,7 @@
             android:layout_height="wrap_content"
             android:textColor="#000"
             android:textSize="20sp"
-            android:text="向左变道?"/>
+            tools:text="向左变道?"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
