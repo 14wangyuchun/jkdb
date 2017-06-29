@@ -8,7 +8,11 @@ import android.support.v7.app.AppCompatActivity;
 import cn.ucai.jkbd.R;
 
 /**
+<<<<<<< HEAD
  * Created by Administrator on 2017/6/29.6666
+=======
+ * Created by Administrator on 2017/6/29.
+>>>>>>> origin/master
  */
 
 public class Andomactivity extends AppCompatActivity {
