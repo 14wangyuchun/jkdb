@@ -28,6 +28,15 @@ public class Question {
     private String item4;
     private String explains;
     private String url;
+    private  String useranswer;
+
+    public String getUseranswer() {
+        return useranswer;
+    }
+
+    public void setUseranswer(String useranswer) {
+        this.useranswer = useranswer;
+    }
 
     public int getId() {
         return id;
