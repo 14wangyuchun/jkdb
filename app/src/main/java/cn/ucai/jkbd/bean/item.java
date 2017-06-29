@@ -59,4 +59,13 @@ public class item {
                 ", 考题数目：" + questionCount +
                 '}';
     }
+
+    @Override
+    public String toString() {
+        return "item{" +
+                "考试科目：'" + subjectTitle + '\'' +
+                ", 时间限制：" + limitTime +
+                ", 考题数目：" + questionCount +
+                '}';
+    }
 }
