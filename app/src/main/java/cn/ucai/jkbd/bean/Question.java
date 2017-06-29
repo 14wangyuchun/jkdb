@@ -28,6 +28,7 @@ public class Question {
     private String item4;
     private String explains;
     private String url;
+    private  String useranswer;
 
     public int getId() {
         return id;
@@ -99,5 +100,13 @@ public class Question {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getUseranswer() {
+        return useranswer;
+    }
+
+    public void setUseranswer(String useranswer) {
+        this.useranswer = useranswer;
     }
 }
