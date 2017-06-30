@@ -53,12 +53,7 @@ public class item {
 
     @Override
     public String toString() {
-        return "item{" +
-                "考试科目：'" + subjectTitle + '\'' +
-                ", 时间限制：" + limitTime +
-                ", 考题数目：" + questionCount +
-                '}';
+        return "考试科目：" + subjectTitle + "\n"+ "时间限制：" + limitTime + "\n" + "考题数目：" + questionCount;
     }
-
 
 }

@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
     public  void text(View view){
-        startActivity(new Intent(MainActivity.this,Andomactivity.class));
+        startActivity(new Intent(MainActivity.this,ExamActivity.class));
     }
     public  void exit(View view){
        finish();
