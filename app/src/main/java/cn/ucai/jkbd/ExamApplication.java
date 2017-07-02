@@ -4,7 +4,7 @@ import java.util.List;
 import cn.ucai.jkbd.bean.Question;
 import cn.ucai.jkbd.bean.item;
 import cn.ucai.jkbd.biz.IExambiz;
-import cn.ucai.jkbd.biz.IExamnizImpl;
+
 
 
 /**
@@ -13,8 +13,9 @@ import cn.ucai.jkbd.biz.IExamnizImpl;
 
 public class ExamApplication extends Application {
     item mExamInfo;
-    IExambiz biz ;
-
+   public static  String LOAD_INFO="load_info";
+    public static  String LOAD_IQUESTION="load_question";
+    public static  String LOAD_SUCCESS="load_success";
     public item getmExamInfo() {
         return mExamInfo;
     }
@@ -38,9 +39,6 @@ public class ExamApplication extends Application {
     public void onCreate(){
         super.onCreate();
         instance=this;
-         biz= new IExamnizImpl();
-
-        initData();
     }
 
     public static ExamApplication getInstance(){
@@ -48,19 +46,4 @@ public class ExamApplication extends Application {
     }
 
 
-    private void initData(){
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-              biz.beginExam();
-
-            }
-
-
-        }).start();
-
-
-
-
-    }
 }
