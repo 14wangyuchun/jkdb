@@ -5,6 +5,9 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 import cn.ucai.jkbd.ExamApplication;
 import cn.ucai.jkbd.R;
@@ -63,6 +66,7 @@ public class ExamActivity extends AppCompatActivity {
                 tvop2.setText(exam.getItem2());
                 tvop3.setText(exam.getItem3());
                 tvop4.setText(exam.getItem4());
+                Picasso.with(ExamActivity.this).load(exam.getUrl()).into(mImageView);
 
             }
     }
