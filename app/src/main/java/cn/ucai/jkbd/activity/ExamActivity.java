@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -29,6 +30,7 @@ import cn.ucai.jkbd.biz.IExamnizImpl;
 
 public class ExamActivity extends AppCompatActivity {
      IExambiz biz ;
+    ProgressBar dialog;
     LoadExamBroadcast loadexambroadcast;
     LinearLayout linearLoading;
     LoadQuestiomExamBroadcast loadQuestiomExamBroadcast;
@@ -43,6 +45,7 @@ public class ExamActivity extends AppCompatActivity {
         loadQuestiomExamBroadcast = new LoadQuestiomExamBroadcast();
         setListener();
         initView();
+        biz=new IExamnizImpl();
         loaddata();
     }
 
@@ -65,7 +68,9 @@ public class ExamActivity extends AppCompatActivity {
     }
 
     private void loaddata() {
-        biz=new IExamnizImpl();
+        linearLoading.setEnabled(false);
+        dialog.setVisibility(View.VISIBLE);
+        tvload.setText("下载中...");
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -86,7 +91,15 @@ public class ExamActivity extends AppCompatActivity {
         tvop3= (TextView) findViewById(R.id.tv_op3);
         tvop4= (TextView) findViewById(R.id.tv_op4);
         tvload= (TextView) findViewById(R.id.tv_load);
+        dialog= (ProgressBar) findViewById(R.id.load_dialog);
         mImageView= (ImageView) findViewById(R.id.im_exam_image);
+        linearLoading.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+           loaddata();
+            }
+        });
 
     }
 
@@ -105,10 +118,12 @@ public class ExamActivity extends AppCompatActivity {
                     showExam(examlist);
 
                 }
-            }
-        }else {
-            tvload.setText("下载失败，点击重新下载");
+            }else {
+                linearLoading.setEnabled(true);
+                dialog.setVisibility(View.GONE);
+                tvload.setText("下载失败，点击重新下载");
 
+            }
         }
     }
 
