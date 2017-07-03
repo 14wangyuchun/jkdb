@@ -51,6 +51,7 @@
         android:orientation="horizontal"
         android:layout_margin="5dp">
         <TextView
+            android:id="@+id/tv_No"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1."
@@ -182,6 +183,7 @@
             android:layout_height="wrap_content"
            android:drawableLeft="@mipmap/exam_pre32x32"
             android:text="上一题"
+            android:onClick="preQuestion"
             android:background="@null"
             android:layout_alignParentLeft="true"/>
         <Button
@@ -190,6 +192,7 @@
             android:layout_height="wrap_content"
            android:drawableRight="@mipmap/exam_next32x32"
             android:text="下一题"
+            android:onClick="nextQuestion"
             android:background="@null"
             android:layout_alignParentRight="true"
             />

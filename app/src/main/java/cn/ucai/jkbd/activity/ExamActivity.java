@@ -34,7 +34,7 @@ public class ExamActivity extends AppCompatActivity {
     LoadExamBroadcast loadexambroadcast;
     LinearLayout linearLoading;
     LoadQuestiomExamBroadcast loadQuestiomExamBroadcast;
-    TextView tvload,tvExamInfo,tvExamTitle,tvop1,tvop2,tvop3,tvop4;
+    TextView tvload,tvExamInfo,tvExamTitle,tvop1,tvop2,tvop3,tvop4,tvno;
         ImageView mImageView;
 
     @Override
@@ -93,6 +93,7 @@ public class ExamActivity extends AppCompatActivity {
         tvload= (TextView) findViewById(R.id.tv_load);
         dialog= (ProgressBar) findViewById(R.id.load_dialog);
         mImageView= (ImageView) findViewById(R.id.im_exam_image);
+        tvno= (TextView) findViewById(R.id.tv_No);
         linearLoading.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -111,13 +112,8 @@ public class ExamActivity extends AppCompatActivity {
                 item result = ExamApplication.getInstance().getmExamInfo();
                 if (result != null) {
                     showData(result);
-
                 }
-                List<Question> examlist = ExamApplication.getInstance().getmExamList();
-                if (examlist != null) {
-                    showExam(examlist);
-
-                }
+                    showExam(biz.getQuestion());
             }else {
                 linearLoading.setEnabled(true);
                 dialog.setVisibility(View.GONE);
@@ -127,15 +123,21 @@ public class ExamActivity extends AppCompatActivity {
         }
     }
 
-    private void showExam(List<Question> examlist) {
-        Question exam=examlist.get(0);
+    private void showExam(Question exam ) {
             if (exam!=null){
+                tvno.setText(biz.getQuestionindex());
                 tvExamTitle.setText(exam.getQuestion());
                 tvop1.setText(exam.getItem1());
                 tvop2.setText(exam.getItem2());
                 tvop3.setText(exam.getItem3());
                 tvop4.setText(exam.getItem4());
-                Picasso.with(ExamActivity.this).load(exam.getUrl()).into(mImageView);
+                if(exam.getUrl()!=null && exam.getUrl().equals(""))
+                {
+                    Picasso.with(ExamActivity.this).load(exam.getUrl()).into(mImageView);
+                }
+             else {
+                    mImageView.setVisibility(View.GONE);
+                }
 
             }
     }
@@ -148,7 +150,16 @@ public class ExamActivity extends AppCompatActivity {
     boolean isLoadQuestion =false;
     boolean isLoadExaminfoREceiver = false;
     boolean isLoadQuestionReceiver =false;
- class  LoadExamBroadcast extends BroadcastReceiver{
+
+    public void preQuestion(View view) {
+        showExam(biz.preQuestion());
+    }
+
+    public void nextQuestion(View view) {
+        showExam(biz.nextQuestion());
+    }
+
+    class  LoadExamBroadcast extends BroadcastReceiver{
      @Override
      public void onReceive(Context context, Intent intent) {
          boolean issuccess = intent.getBooleanExtra(ExamApplication.LOAD_SUCCESS,false);
