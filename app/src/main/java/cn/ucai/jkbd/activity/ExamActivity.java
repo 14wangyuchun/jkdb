@@ -189,8 +189,15 @@ public class ExamActivity extends AppCompatActivity {
                 cb3.setVisibility(exam.getItem3().equals("")?View.GONE:View.VISIBLE);
                 layout3.setVisibility(exam.getItem3().equals("")?View.GONE:View.VISIBLE);
                 layout4.setVisibility(exam.getItem3().equals("")?View.GONE:View.VISIBLE);
-
+                     resetOptions();
             }
+    }
+
+    private void resetOptions() {
+        for (CheckBox cb :cbs)
+        {
+            cb.setChecked(false);
+        }
     }
 
     private void showData(item result) {
