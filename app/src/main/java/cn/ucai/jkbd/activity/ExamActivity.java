@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.Gallery;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -30,6 +31,7 @@ import cn.ucai.jkbd.bean.Question;
 import cn.ucai.jkbd.bean.item;
 import cn.ucai.jkbd.biz.IExambiz;
 import cn.ucai.jkbd.biz.IExamnizImpl;
+import cn.ucai.jkbd.view.AdapterQuestion;
 
 /**
  * Created by Administrator on 2017/6/29.
@@ -38,8 +40,10 @@ import cn.ucai.jkbd.biz.IExamnizImpl;
 public class ExamActivity extends AppCompatActivity {
      IExambiz biz ;
     ProgressBar dialog;
+    AdapterQuestion adq;
     CheckBox[] cbs = new CheckBox[4];
     LoadExamBroadcast loadexambroadcast;
+    Gallery Gallery01;
     LinearLayout linearLoading,layout3,layout4;
     LoadQuestiomExamBroadcast loadQuestiomExamBroadcast;
     TextView tvtime,tvload,tvExamInfo,tvExamTitle,tvop1,tvop2,tvop3,tvop4,tvno;
@@ -92,6 +96,7 @@ public class ExamActivity extends AppCompatActivity {
 
     private void initView()
     {
+        Gallery01 = (Gallery) findViewById(R.id.Gallery1);
         tvtime = (TextView) findViewById(R.id.tv_time);
         tvExamInfo= (TextView) findViewById(R.id.tv_andinfo);
         linearLoading= (LinearLayout) findViewById(R.id.layout_loading);
@@ -167,6 +172,7 @@ public class ExamActivity extends AppCompatActivity {
                     showData(result);
                     inittime(result);
                 }
+                initGrelly();
                     showExam(biz.getQuestion());
             }else {
                 linearLoading.setEnabled(true);
@@ -177,8 +183,14 @@ public class ExamActivity extends AppCompatActivity {
         }
     }
 
+    private void initGrelly() {
+        adq = new AdapterQuestion(this);
+        Gallery01.setAdapter(adq);
+
+    }
+
     private void inittime(item result) {
-  int sumTime = result.getLimitTime()*60*1000;
+  int sumTime = result.getLimitTime()*60*1000*60;
         final Timer timer = new Timer();
         final long overtime = sumTime+ System.currentTimeMillis();
         timer.schedule(new TimerTask() {

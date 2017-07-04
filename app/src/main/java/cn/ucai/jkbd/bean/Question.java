@@ -29,6 +29,16 @@ public class Question {
     private String explains;
     private String url;
 
+    public String getUseranswer() {
+        return useranswer;
+    }
+
+    public void setUseranswer(String useranswer) {
+        this.useranswer = useranswer;
+    }
+
+    private  String useranswer;
+
     public int getId() {
         return id;
     }
