@@ -190,6 +190,12 @@ public class ExamActivity extends AppCompatActivity {
                 layout3.setVisibility(exam.getItem3().equals("")?View.GONE:View.VISIBLE);
                 layout4.setVisibility(exam.getItem3().equals("")?View.GONE:View.VISIBLE);
                      resetOptions();
+                String useranswer = exam.getUseranswer();
+                if (useranswer!=null && !useranswer.equals(""))
+                {
+                 int usercb = Integer.parseInt(useranswer)-1;
+                    cbs[usercb].setChecked(true);
+                }
             }
     }
 
