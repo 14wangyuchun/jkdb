@@ -199,7 +199,18 @@ public class ExamActivity extends AppCompatActivity {
             cb.setChecked(false);
         }
     }
+    public void saveAnuserswer()
+    {
 
+        for (int i=0; i<cbs.length;i++)
+        {
+            if (cbs[i].isChecked())
+            {
+                biz.getQuestion().setUseranswer(String.valueOf(i+1));
+                return;
+            }
+        }
+    }
     private void showData(item result) {
         tvExamInfo.setText(result.toString());
 
@@ -210,10 +221,12 @@ public class ExamActivity extends AppCompatActivity {
     boolean isLoadQuestionReceiver =false;
 
     public void preQuestion(View view) {
+        saveAnuserswer();
         showExam(biz.preQuestion());
     }
 
     public void nextQuestion(View view) {
+        saveAnuserswer();
         showExam(biz.nextQuestion());
     }
 
