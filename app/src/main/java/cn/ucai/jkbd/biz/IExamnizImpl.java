@@ -43,6 +43,20 @@ public class IExamnizImpl implements  IExambiz {
     }
 
     @Override
+    public Question getQuestion(int index) {
+        Examlist=ExamApplication.getInstance().getmExamList();
+        QuestionIndex = index;
+        if(Examlist!=null)
+        {
+            return Examlist.get(QuestionIndex);
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    @Override
     public Question nextQuestion() {
         if(Examlist!=null && QuestionIndex<Examlist.size()-1)
         {QuestionIndex++;

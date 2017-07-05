@@ -9,6 +9,7 @@ import cn.ucai.jkbd.bean.Question;
 public interface IExambiz {
     void beginExam();
     Question getQuestion();
+    Question getQuestion(int index);
     Question nextQuestion();
     Question preQuestion();
     String getQuestionindex();
