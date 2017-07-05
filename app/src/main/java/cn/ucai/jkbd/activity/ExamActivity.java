@@ -43,6 +43,7 @@ public class ExamActivity extends AppCompatActivity {
     ProgressBar dialog;
     AdapterQuestion adq;
     CheckBox[] cbs = new CheckBox[4];
+    TextView tvOps[] = new TextView[4];
     LoadExamBroadcast loadexambroadcast;
     Gallery Gallery01;
     LinearLayout linearLoading,layout3,layout4;
@@ -114,6 +115,10 @@ public class ExamActivity extends AppCompatActivity {
            cbs[1]=cb2;
            cbs[2]=cb3;
            cbs[3]=cb4;
+        tvOps[0]=tvop1;
+        tvOps[1]=tvop2;
+        tvOps[2]=tvop3;
+        tvOps[3]=tvop4;
         layout3= (LinearLayout) findViewById(R.id.layout_03);
         layout4= (LinearLayout) findViewById(R.id.layout_04);
         tvload= (TextView) findViewById(R.id.tv_load);
@@ -249,8 +254,47 @@ public class ExamActivity extends AppCompatActivity {
                 {
                  int usercb = Integer.parseInt(useranswer)-1;
                     cbs[usercb].setChecked(true);
+                    setOptions(true);
+                    setanswercolor(useranswer,exam.getAnswer());
+                }else
+                    setOptions(false);
+                setOptionscolor();
+            }
+    }
+
+    private void setOptionscolor() {
+        for (TextView tvop: tvOps)
+        {
+            tvop.setTextColor(getResources().getColor(R.color.Black));
+        }
+    }
+
+    private void setanswercolor(String useranswer,String Answer)
+{
+    int ra = Integer.parseInt(Answer)-1;
+    for (int i=0; i<tvOps.length;i++)
+    {
+        if(i==ra)
+        {
+            tvOps[i].setTextColor(getResources().getColor(R.color.Green));
+        }else
+        {
+            if(!useranswer.equals(Answer)) {
+                int ua = Integer.parseInt(useranswer) - 1;
+                if (i == ua) {
+                    tvOps[i].setTextColor(getResources().getColor(R.color.Red));
+                } else {
+                    tvOps[i].setTextColor(getResources().getColor(R.color.Black));
                 }
             }
+        }
+    }
+}
+    private void setOptions(boolean b) {
+        for (CheckBox cb :cbs)
+        {
+            cb.setEnabled(!b);
+        }
     }
 
     private void resetOptions() {
