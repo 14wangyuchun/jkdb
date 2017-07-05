@@ -266,10 +266,13 @@ public class ExamActivity extends AppCompatActivity {
         {
             if (cbs[i].isChecked())
             {
+                adq.notifyDataSetChanged();
                 biz.getQuestion().setUseranswer(String.valueOf(i+1));
                 return;
             }
         }
+        biz.getQuestion().setUseranswer("");
+        adq.notifyDataSetChanged();
     }
     private void showData(item result) {
         tvExamInfo.setText(result.toString());
