@@ -51,11 +51,11 @@ public class AdapterQuestion extends BaseAdapter{
         String usa = questions.get(position).getUseranswer();
         if(usa!=null && !usa.equals(""))
         {
-            ivquestion.setImageResource(R.mipmap.answer24x24);
+            ivquestion.setImageResource(position%2==0?R.mipmap.dagou1:R.mipmap.dagou2);
         }
         else
         {
-            ivquestion.setImageResource(R.mipmap.ques24x24);
+            ivquestion.setImageResource(position%2==0?R.mipmap.wenhao3:R.mipmap.wenhao2);
         }
          tvno1.setText("第"+(position+1)+"题");
         return view;
