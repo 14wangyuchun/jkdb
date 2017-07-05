@@ -49,14 +49,20 @@ public class AdapterQuestion extends BaseAdapter{
         TextView tvno1= (TextView) view.findViewById(R.id.tv_no1);
         ImageView ivquestion = (ImageView) view.findViewById(R.id.iv_question);
         String usa = questions.get(position).getUseranswer();
+        String rusa = questions.get(position).getAnswer();
         if(usa!=null && !usa.equals(""))
         {
             ivquestion.setImageResource(position%2==0?R.mipmap.dagou1:R.mipmap.dagou2);
+            if (!usa.equals(rusa))
+            {
+                ivquestion.setImageResource(R.mipmap.erro);
+            }
         }
         else
         {
             ivquestion.setImageResource(position%2==0?R.mipmap.wenhao3:R.mipmap.wenhao2);
         }
+
          tvno1.setText("第"+(position+1)+"题");
         return view;
     }
