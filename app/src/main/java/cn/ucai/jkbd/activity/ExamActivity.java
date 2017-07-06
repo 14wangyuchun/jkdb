@@ -256,9 +256,10 @@ public class ExamActivity extends AppCompatActivity {
                     cbs[usercb].setChecked(true);
                     setOptions(true);
                     setanswercolor(useranswer,exam.getAnswer());
-                }else
+                }else {
                     setOptions(false);
-                setOptionscolor();
+                    setOptionscolor();
+                }
             }
     }
 
@@ -311,6 +312,7 @@ public class ExamActivity extends AppCompatActivity {
             if (cbs[i].isChecked())
             {
                 adq.notifyDataSetChanged();
+                setOptions(true);
                 biz.getQuestion().setUseranswer(String.valueOf(i+1));
                 return;
             }
