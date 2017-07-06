@@ -338,8 +338,20 @@ public class ExamActivity extends AppCompatActivity {
         saveAnuserswer();
         showExam(biz.nextQuestion());
     }
-
     public void commit(View view) {
+        AlertDialog.Builder builder =new AlertDialog.Builder(this);
+        builder.setIcon(R.mipmap.main_menu_message)
+                .setTitle("交卷")
+                .setMessage("时间还没完,你确定要结束吗!")
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        commit();
+                    }
+                }).setNegativeButton("取消",null);
+        builder.create().show();
+    }
+    public void commit() {
         saveAnuserswer();
         int s=biz.commitExam();
         Log.e("112","s"+s);
@@ -356,6 +368,7 @@ public class ExamActivity extends AppCompatActivity {
                         finish();
                     }
                 });
+        builder.setCancelable(false);
         builder.create().show();
     }
 
